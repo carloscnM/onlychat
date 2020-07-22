@@ -11,11 +11,12 @@ import configIo from '../../config/SocketApi.json'
 
 import NewUserModal from '../Modal/NewUser';
 
+const ENDPOINT = process.env.URLAPI || configIo.ENDPOINT;
 
 const MainChat: React.FC = () => {
     let registeredUsername = localStorage.getItem('username');
 
-    const [socket] = useState<SocketIOClient.Socket>(io(configIo.ENDPOINT));
+    const [socket] = useState<SocketIOClient.Socket>(io(ENDPOINT));
 
     const [username, setUsername] = useState<string>(registeredUsername ? registeredUsername : '');
     const [usernameInputModal, setUsernameInputModal] = useState<string>('');
